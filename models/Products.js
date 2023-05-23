@@ -2,9 +2,13 @@ import { sequelize } from "../database/database.js";
 import { DataTypes } from "sequelize";
 
 export const Product = sequelize.define("products", {
-  id: {
+  internalId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
+  },
+  clientId: {
+    type: DataTypes.INTEGER,
   },
   name: {
     type: DataTypes.STRING,

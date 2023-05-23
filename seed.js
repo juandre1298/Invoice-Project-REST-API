@@ -258,12 +258,12 @@ export const invoices = [
     total: 1085,
     products: [
       {
-        name: "iPhone 5S",
+        name: "iPhone 7 Plus",
         quantity: 2,
       },
 
       {
-        name: "iPhone 6",
+        name: "iPhone 12 Pro Max",
         quantity: 5,
       },
     ],
@@ -281,7 +281,7 @@ export const invoices = [
       },
 
       {
-        name: "iPhone 6",
+        name: "iPhone X",
         quantity: 3,
       },
     ],

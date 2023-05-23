@@ -16,7 +16,7 @@ export const getInvoices = async (req, res) => {
         const invoicePurchaseOrders = await PurchaseOrders.findAll({
           where: { invoiceId: invoice.id },
         });
-        // for each purchase order it returns the product id and the quantity
+        // for each purchase order it returns the product internalId and the quantity
         const productsByIndexObject = invoicePurchaseOrders.map(
           (purchaseOrder) => {
             return {
@@ -25,13 +25,13 @@ export const getInvoices = async (req, res) => {
             };
           }
         );
-        // new this code block will get each product by id
+        // now this code block will get each product by id
         const objectsPurchasedDisplay = await Promise.all(
           productsByIndexObject.map(async (productsPurchased) => {
             // get the product by id
             const productsDisplayed = await Product.findOne({
               where: {
-                id: productsPurchased.productId,
+                internalId: productsPurchased.productId,
               },
             });
             return {
@@ -74,7 +74,7 @@ export const createInvoice = async (req, res) => {
       });
       const createdPurchaseOrder = await PurchaseOrders.create({
         quantity: product.quantity,
-        productId: purchaseOrderProduct.dataValues.id,
+        productId: purchaseOrderProduct.dataValues.internalId,
         invoiceId: createdInvoice.dataValues.id,
       });
       return createdPurchaseOrder;
@@ -86,9 +86,33 @@ export const getInvoiceById = async (req, res) => {
   const { id } = req.params;
   try {
     const invoice = await Invoice.findOne({ where: { id } });
+    // get all purchase orders of this invoice
+    const purchaseOrders = await PurchaseOrders.findAll({
+      where: { invoiceId: id },
+    });
     if (!invoice)
       return res.status(404).json({ message: "Invoice doesn't existe" });
-    res.json(invoice);
+    // now this code block will get each product by id
+    const objectsPurchasedDisplay = await Promise.all(
+      purchaseOrders.map(async (productsPurchased) => {
+        // get the product by name
+        const productsDisplayed = await Product.findOne({
+          where: {
+            internalId: productsPurchased.productId,
+          },
+        });
+        return {
+          ...productsDisplayed.dataValues,
+          quantity: productsPurchased.quantity,
+        };
+      })
+    );
+    const responce = {
+      ...invoice.dataValues,
+      product: objectsPurchasedDisplay,
+    };
+
+    res.json(responce);
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
@@ -96,11 +120,15 @@ export const getInvoiceById = async (req, res) => {
 export const deleteInvoice = async (req, res) => {
   try {
     const { id } = req.params;
+    await PurchaseOrders.destroy({
+      where: { invoiceId: id },
+    });
     await Invoice.destroy({
       where: {
         id,
       },
     });
+
     res.sendStatus(204);
   } catch (err) {
     return res.status(500).json([{ message: err.message }]);
