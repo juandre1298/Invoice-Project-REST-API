@@ -12,15 +12,25 @@ export const getUsers = async (req, res) => {
 };
 export const createUser = async (req, res) => {
   try {
-    const { name, second_name, email, password, status } = req.body;
+    const {
+      name,
+      pointOfContact,
+      phoneNumber,
+      status,
+      email,
+      password,
+      dateOfEntry,
+    } = req.body;
     const hash = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
       name,
-      second_name,
+      status,
+      pointOfContact,
+      phoneNumber,
       email,
       password: hash,
-      status,
+      dateOfEntry,
     });
     res.json(newUser);
   } catch (error) {

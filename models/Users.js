@@ -10,7 +10,10 @@ export const User = sequelize.define("users", {
   name: {
     type: DataTypes.STRING,
   },
-  second_name: {
+  pointOfContact: {
+    type: DataTypes.STRING,
+  },
+  phoneNumber: {
     type: DataTypes.STRING,
   },
   email: {
@@ -21,6 +24,9 @@ export const User = sequelize.define("users", {
   },
   status: {
     type: DataTypes.STRING,
-    defaultValue: "normal",
+    defaultValue: "client",
+  },
+  dateOfEntry: {
+    type: DataTypes.DATE,
   },
 });
