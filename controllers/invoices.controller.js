@@ -52,11 +52,19 @@ export const getInvoices = async (req, res) => {
   }
 };
 export const createInvoice = async (req, res) => {
-  const { userId, discount, products } = req.body;
+  const { userId, discount, products, dateOfEntry, subtotal, image, total } =
+    req.body;
+
+  // create invoice
   const createdInvoice = await Invoice.create({
     userId,
     discount,
+    dateOfEntry,
+    subtotal,
+    image,
+    total,
   });
+  // create purchase Order
   const purchaseOrders = await Promise.all(
     products.map(async (product) => {
       const purchaseOrderProduct = await Product.findOne({

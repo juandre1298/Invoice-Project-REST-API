@@ -11,4 +11,16 @@ export const Invoice = sequelize.define("invoices", {
     type: DataTypes.DECIMAL(5, 4),
     defaultValue: 0,
   },
+  dateOfEntry: {
+    type: DataTypes.DATE,
+  },
+  subtotal: {
+    type: DataTypes.INTEGER,
+  },
+  image: {
+    type: DataTypes.INTEGER,
+  },
+  total: {
+    type: DataTypes.INTEGER,
+  },
 });

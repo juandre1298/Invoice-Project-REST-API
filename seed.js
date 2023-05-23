@@ -251,44 +251,38 @@ export const products = [
 
 export const invoices = [
   {
-    userId: 2,
+    userId: 5,
     discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
     products: [
       {
-        name: "product C",
-        quantity: 10,
+        name: "iPhone 5S",
+        quantity: 2,
       },
+
       {
-        name: "product A",
-        quantity: 20,
-      },
-      {
-        name: "product B",
-        quantity: 120,
+        name: "iPhone 6",
+        quantity: 5,
       },
     ],
   },
   {
-    userId: 1,
+    userId: 6,
     discount: 0.2,
+    dateOfEntry: "1-jan-2023",
+    subtotal: 1550,
+    total: 1085,
     products: [
       {
-        name: "product C",
-        quantity: 10,
+        name: "iPhone 5S",
+        quantity: 1,
       },
+
       {
-        name: "product B",
-        quantity: 120,
-      },
-    ],
-  },
-  {
-    userId: 3,
-    discount: 0.1,
-    products: [
-      {
-        name: "product C",
-        quantity: 10,
+        name: "iPhone 6",
+        quantity: 3,
       },
     ],
   },
@@ -320,7 +314,7 @@ export const mainSeed = async () => {
       });
     })
   );
-  /* 
+
   await Promise.all(
     invoices.map((invoice) => {
       return fetch("http://localhost:4000/invoices", {
@@ -331,5 +325,5 @@ export const mainSeed = async () => {
         body: JSON.stringify(invoice),
       });
     })
-  ); */
+  );
 };
