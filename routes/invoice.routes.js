@@ -16,7 +16,7 @@ router.post("/invoices", createInvoice);
 router.delete("/invoices/:id", deleteInvoice);
 router.put("/invoices/:id", updateInvoice);
 router.get("/invoices/:id", getInvoiceById);
-router.get("/invoices/:startId/:endId", getInvoiceByRange);
+router.get("/invoices/:start/:end", getInvoiceByRange);
 router.get("/invoices/client/:userId/:start/:end", getInvoiceByuserByRange);
 
 export default router;

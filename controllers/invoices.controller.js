@@ -101,13 +101,29 @@ export const getInvoiceById = async (req, res) => {
   }
 };
 export const getInvoiceByRange = async (req, res) => {
-  const { startId, endId } = req.params;
+  let { start, end } = req.params;
   let response = [];
 
+  start = Number(start);
+  end = Number(end);
+
+  const N = end - start;
+
+  console.log(N);
+
+  let c = 0;
   try {
-    for (let i = startId; i <= endId; i++) {
-      const responseN = await servicesGetInvoiceById(i);
-      response.push(responseN);
+    // get all clients invoices
+    const invoices = await Invoice.findAll();
+
+    for (let i = start; i <= end; i++) {
+      if (i >= invoices.length) {
+        break;
+      } else {
+        // get element by id:
+        const responseN = await servicesGetInvoiceById(invoices[i].id);
+        response.push(responseN);
+      }
     }
 
     res.json(response);
@@ -131,7 +147,7 @@ export const getInvoiceByuserByRange = async (req, res) => {
     // get all clients invoices
     const invoices = await Invoice.findAll({ where: { userId } });
     console.log("invoice length", invoices.length);
-    for (let i = 0; i <= N; i++) {
+    for (let i = start; i <= end; i++) {
       if (i >= invoices.length) {
         break;
       } else {
