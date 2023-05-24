@@ -40,12 +40,17 @@ export const getInvoices = async (req, res) => {
             };
           })
         );
+        // get user by userId
+        const user = await User.findOne({ where: { id: invoice.userId } });
+
         return {
           ...invoice.dataValues,
+          userName: user.dataValues.name,
           product: objectsPurchasedDisplay,
         };
       })
     );
+
     res.json(response);
   } catch (err) {
     return res.status(500).json({ message: err.message });
@@ -103,12 +108,17 @@ export const getInvoiceById = async (req, res) => {
         });
         return {
           ...productsDisplayed.dataValues,
+
           quantity: productsPurchased.quantity,
         };
       })
     );
+    // get user by userId
+    const user = await User.findOne({ where: { id: invoice.userId } });
+
     const responce = {
       ...invoice.dataValues,
+      userName: user.dataValues.name,
       product: objectsPurchasedDisplay,
     };
 
