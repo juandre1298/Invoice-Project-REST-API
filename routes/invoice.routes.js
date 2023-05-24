@@ -6,6 +6,7 @@ import {
   deleteInvoice,
   getInvoiceByRange,
   updateInvoice,
+  getInvoiceByuserByRange,
 } from "../controllers/invoices.controller.js";
 
 const router = Router();
@@ -16,5 +17,6 @@ router.delete("/invoices/:id", deleteInvoice);
 router.put("/invoices/:id", updateInvoice);
 router.get("/invoices/:id", getInvoiceById);
 router.get("/invoices/:startId/:endId", getInvoiceByRange);
+router.get("/invoices/client/:userId/:start/:end", getInvoiceByuserByRange);
 
 export default router;

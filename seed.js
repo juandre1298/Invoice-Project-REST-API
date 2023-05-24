@@ -251,7 +251,7 @@ export const products = [
 
 export const invoices = [
   {
-    userId: 5,
+    userId: 2,
     discount: 0.3,
     dateOfEntry: "1-apr-2023",
     subtotal: 1550,
@@ -269,7 +269,7 @@ export const invoices = [
     ],
   },
   {
-    userId: 5,
+    userId: 6,
     discount: 0.3,
     dateOfEntry: "1-apr-2023",
     subtotal: 1550,
