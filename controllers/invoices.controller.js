@@ -3,6 +3,10 @@ import { PurchaseOrders } from "../models/PurchaseOrders.js";
 import { User } from "../models/Users.js";
 import { Product } from "../models/Products.js";
 
+// import services
+
+import { servicesGetInvoiceById } from "../services/getInvoiceById.js";
+
 export const getInvoices = async (req, res) => {
   try {
     // get all invoices
@@ -90,43 +94,13 @@ export const createInvoice = async (req, res) => {
 export const getInvoiceById = async (req, res) => {
   const { id } = req.params;
   try {
-    const invoice = await Invoice.findOne({ where: { id } });
-    // get all purchase orders of this invoice
-    const purchaseOrders = await PurchaseOrders.findAll({
-      where: { invoiceId: id },
-    });
-    if (!invoice)
-      return res.status(404).json({ message: "Invoice doesn't existe" });
-    // now this code block will get each product by id
-    const objectsPurchasedDisplay = await Promise.all(
-      purchaseOrders.map(async (productsPurchased) => {
-        // get the product by name
-        const productsDisplayed = await Product.findOne({
-          where: {
-            internalId: productsPurchased.productId,
-          },
-        });
-        return {
-          ...productsDisplayed.dataValues,
-
-          quantity: productsPurchased.quantity,
-        };
-      })
-    );
-    // get user by userId
-    const user = await User.findOne({ where: { id: invoice.userId } });
-
-    const responce = {
-      ...invoice.dataValues,
-      userName: user.dataValues.name,
-      product: objectsPurchasedDisplay,
-    };
-
-    res.json(responce);
-  } catch (err) {
-    return res.status(500).json({ message: err.message });
+    const response = await servicesGetInvoiceById(id);
+    res.json(response);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
   }
 };
+
 export const deleteInvoice = async (req, res) => {
   try {
     const { id } = req.params;

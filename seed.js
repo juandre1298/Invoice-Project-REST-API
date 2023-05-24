@@ -428,6 +428,266 @@ export const invoices = [
         name: "iPhone 12 Pro Max",
         quantity: 5,
       },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+    ],
+  },
+
+  {
+    userId: 6,
+    discount: 0.2,
+    dateOfEntry: "1-jan-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 5S",
+        quantity: 1,
+      },
+
+      {
+        name: "iPhone X",
+        quantity: 3,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+    ],
+  },
+
+  {
+    userId: 6,
+    discount: 0.2,
+    dateOfEntry: "1-jan-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 5S",
+        quantity: 1,
+      },
+
+      {
+        name: "iPhone X",
+        quantity: 3,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+    ],
+  },
+
+  {
+    userId: 6,
+    discount: 0.2,
+    dateOfEntry: "1-jan-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 5S",
+        quantity: 1,
+      },
+
+      {
+        name: "iPhone X",
+        quantity: 3,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+    ],
+  },
+
+  {
+    userId: 6,
+    discount: 0.2,
+    dateOfEntry: "1-jan-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 5S",
+        quantity: 1,
+      },
+
+      {
+        name: "iPhone X",
+        quantity: 3,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 0.3,
+    dateOfEntry: "1-apr-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
+      {
+        name: "iPhone 12 Pro Max",
+        quantity: 5,
+      },
     ],
   },
 
