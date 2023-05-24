@@ -100,7 +100,21 @@ export const getInvoiceById = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
+export const getInvoiceByRange = async (req, res) => {
+  const { startId, endId } = req.params;
+  let response = [];
+  console.log(startId, endId);
+  try {
+    for (let i = startId; i <= endId; i++) {
+      const responseN = await servicesGetInvoiceById(i);
+      response.push(responseN);
+    }
+    console.log(response);
+    res.json(response);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 export const deleteInvoice = async (req, res) => {
   try {
     const { id } = req.params;
