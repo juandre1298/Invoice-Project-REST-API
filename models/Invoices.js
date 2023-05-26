@@ -8,7 +8,7 @@ export const Invoice = sequelize.define("invoices", {
     autoIncrement: true,
   },
   discount: {
-    type: DataTypes.DECIMAL(5, 4),
+    type: DataTypes.INTEGER,
     defaultValue: 0,
   },
   dateOfEntry: {
@@ -18,7 +18,7 @@ export const Invoice = sequelize.define("invoices", {
     type: DataTypes.INTEGER,
   },
   image: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   total: {
     type: DataTypes.INTEGER,
