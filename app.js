@@ -4,6 +4,7 @@ import userRoutes from "./routes/users.routes.js";
 import loginRoutes from "./routes/login.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import invoiceRoutes from "./routes/invoice.routes.js";
+import urlS3Routes from "./routes/urlS3.routes.js";
 
 import "./models/associations.js";
 
@@ -26,5 +27,6 @@ app.use(userRoutes);
 app.use(loginRoutes);
 app.use(productRoutes);
 app.use(invoiceRoutes);
+app.use(urlS3Routes);
 
 export default app;
