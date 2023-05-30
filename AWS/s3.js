@@ -1,39 +1,31 @@
-import dotenv from "dotenv";
-import aws from "aws-sdk";
-import crypto from "crypto";
-import { promisify } from "util";
-const randomBytes = promisify(crypto.randomBytes);
-
+import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 
-const region = "us-east-1";
-const bucketName = "technical-test-aimedge";
+import fs from "fs";
 
-const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+import AWS from "aws-sdk";
 
-const s3 = new aws.S3({
+const bucketName = process.env.AWS_BUCKET_NAME;
+const region = process.env.AWS_BUCKET_REGION;
+const accessKeyId = process.env.AWS_ACCESS_KEY;
+const secretAccessKey = process.env.AWS_SECRET_KEY;
+console.log("credencials", accessKeyId, secretAccessKey);
+const s3 = new AWS.S3({
   region,
   accessKeyId,
   secretAccessKey,
-  signatureVersion: "v4",
 });
 
-export async function generateUploadURL() {
-  try {
-    const rawBytes = await randomBytes(16);
-    const imageName = rawBytes.toString("hex");
+// uploads a file to s3
 
-    const params = {
-      Bucket: bucketName,
-      Key: imageName,
-      Expires: 120,
-    };
+export function uploadFile(file) {
+  const fileStream = fs.createReadStream(file.path);
 
-    const uploadURL = await s3.getSignedUrlPromise("putObject", params);
+  const uploadParams = {
+    Bucket: bucketName,
+    Body: fileStream,
+    Key: file.filename,
+  };
 
-    return uploadURL;
-  } catch (error) {
-    console.log(error);
-  }
+  return s3.upload(uploadParams).promise();
 }

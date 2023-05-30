@@ -1529,7 +1529,7 @@ export const mainSeed = async () => {
     })
   );
 
-  await Promise.all(
+  /*  await Promise.all(
     invoices.map((invoice) => {
       return fetch("http://localhost:4000/invoices", {
         method: "POST",
@@ -1539,5 +1539,5 @@ export const mainSeed = async () => {
         body: JSON.stringify(invoice),
       });
     })
-  );
+  ); */
 };
