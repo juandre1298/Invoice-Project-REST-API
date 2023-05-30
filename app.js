@@ -40,14 +40,12 @@ app.post("/images", upload.single("image"), async (req, res) => {
   console.log(file);
   try {
     const result = await uploadFile(file);
-
+    res.send({ result });
     console.log("result:", result);
   } catch (error) {
     console.log(error);
+    res.send({ message: error });
   }
-
-  const description = req.body.description;
-  res.send("new image uploaded to S3 bucket ok");
 });
 
 export default app;
