@@ -33,13 +33,13 @@ import multer from "multer";
 
 const upload = multer({ dest: "uploads/" });
 
-import { uploadFile } from "./AWS/s3.js";
+import { uploadFile, uploadFile2 } from "./AWS/s3.js";
 
 app.post("/images", upload.single("image"), async (req, res) => {
   const file = req.file;
   console.log(file);
   try {
-    const result = await uploadFile(file);
+    const result = await uploadFile2(file);
     res.send({ result });
     console.log("result:", result);
   } catch (error) {
