@@ -44,22 +44,7 @@ export const users = [
     password: "Lifelinea75Ari",
     dateOfEntry: "1-Apr-23",
   },
-  {
-    name: "Lifelinea LLC",
-    pointOfContact: "Ari Barkan",
-    phoneNumber: "758305749",
-    email: "ari@lifelinea.com",
-    password: "Lifelinea75Ari",
-    dateOfEntry: "1-Apr-23",
-  },
-  {
-    name: "Lifelinea LLC",
-    pointOfContact: "Ari Barkan",
-    phoneNumber: "758305749",
-    email: "ari@lifelinea.com",
-    password: "Lifelinea75Ari",
-    dateOfEntry: "1-Apr-23",
-  },
+
   {
     name: "Focus Forward LLC",
     pointOfContact: "Dave Pataki",
@@ -248,8 +233,112 @@ export const products = [
     price: 1650,
   },
 ];
-
 export const invoices = [
+  {
+    userId: 2,
+    discount: 3,
+    dateOfEntry: "15-jan-2023",
+    subtotal: 1550,
+    total: 1085,
+    products: [
+      {
+        name: "iPhone 7 Plus",
+        quantity: 2,
+      },
+      {
+        name: "iPhone SE",
+        quantity: 5,
+      },
+      {
+        name: "Apple Watch 7",
+        quantity: 5,
+      },
+    ],
+  },
+  {
+    userId: 5,
+    discount: 7,
+    dateOfEntry: "2-feb-2023",
+    subtotal: 4050,
+    total: 3766.5,
+    products: [
+      {
+        name: "iPhone 13",
+        quantity: 4,
+      },
+      {
+        name: "iPad Pro",
+        quantity: 3,
+      },
+      {
+        name: "AirPods 2 Gen",
+        quantity: 2,
+      },
+      {
+        name: "iPad Mini",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 8,
+    discount: 5,
+    dateOfEntry: "20-mar-2023",
+    subtotal: 4400,
+    total: 4180,
+    products: [
+      {
+        name: "iPhone X+",
+        quantity: 2,
+      },
+      {
+        name: "iPhone SE",
+        quantity: 3,
+      },
+      {
+        name: "Apple Watch 7",
+        quantity: 4,
+      },
+      {
+        name: "iPad Pro",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 6,
+    discount: 2,
+    dateOfEntry: "10-apr-2023",
+    subtotal: 2550,
+    total: 2499,
+    products: [
+      {
+        name: "iPhone 11",
+        quantity: 2,
+      },
+      {
+        name: "iPad Air",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 4,
+    discount: 1,
+    dateOfEntry: "15-may-2023",
+    subtotal: 1150,
+    total: 1138.5,
+    products: [
+      {
+        name: "iPhone XR",
+        quantity: 1,
+      },
+      {
+        name: "AirPods Pro",
+        quantity: 2,
+      },
+    ],
+  },
   {
     userId: 2,
     discount: 3,
@@ -274,7 +363,7 @@ export const invoices = [
   {
     userId: 5,
     discount: 7,
-    dateOfEntry: "8-jun-2023",
+    dateOfEntry: "8-jan-2023",
     subtotal: 4050,
     total: 3766.5,
     products: [
@@ -358,7 +447,7 @@ export const invoices = [
   {
     userId: 7,
     discount: 6,
-    dateOfEntry: "5-jun-2023",
+    dateOfEntry: "5-may-2023",
     subtotal: 3200,
     total: 3008,
     products: [
@@ -413,7 +502,7 @@ export const invoices = [
   {
     userId: 5,
     discount: 7,
-    dateOfEntry: "8-jun-2023",
+    dateOfEntry: "8-feb-2023",
     subtotal: 4050,
     total: 3766.5,
     products: [
@@ -497,7 +586,7 @@ export const invoices = [
   {
     userId: 7,
     discount: 6,
-    dateOfEntry: "5-jun-2023",
+    dateOfEntry: "5-feb-2023",
     subtotal: 3200,
     total: 3008,
     products: [
@@ -531,7 +620,7 @@ export const invoices = [
   {
     userId: 10,
     discount: 8,
-    dateOfEntry: "12-jun-2023",
+    dateOfEntry: "12-apr-2023",
     subtotal: 5600,
     total: 5152,
     products: [
@@ -675,7 +764,7 @@ export const invoices = [
   {
     userId: 6,
     discount: 7,
-    dateOfEntry: "7-jun-2023",
+    dateOfEntry: "7-jan-2023",
     subtotal: 3550,
     total: 3301.5,
     products: [
@@ -734,7 +823,7 @@ export const invoices = [
   {
     userId: 8,
     discount: 4,
-    dateOfEntry: "2-jun-2023",
+    dateOfEntry: "2-may-2023",
     subtotal: 1950,
     total: 1872,
     products: [
@@ -793,7 +882,269 @@ export const invoices = [
   {
     userId: 10,
     discount: 8,
-    dateOfEntry: "12-jun-2023",
+    dateOfEntry: "12-mar-2023",
+    subtotal: 5600,
+    total: 5152,
+    products: [
+      {
+        name: "iPhone 13 mini",
+        quantity: 2,
+      },
+      {
+        name: "iPad Pro",
+        quantity: 4,
+      },
+      {
+        name: "AirPods 2 Gen",
+        quantity: 3,
+      },
+    ],
+  },
+  {
+    userId: 9,
+    discount: 3,
+    dateOfEntry: "30-may-2023",
+    subtotal: 2150,
+    total: 2084.5,
+    products: [
+      {
+        name: "iPhone 7",
+        quantity: 1,
+      },
+      {
+        name: "iPad Air",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    userId: 3,
+    discount: 5,
+    dateOfEntry: "5-apr-2023",
+    subtotal: 4050,
+    total: 3847.5,
+    products: [
+      {
+        name: "iPhone 13 Pro",
+        quantity: 4,
+      },
+      {
+        name: "iPad Pro",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 10,
+    discount: 1,
+    dateOfEntry: "9-may-2023",
+    subtotal: 950,
+    total: 940.5,
+    products: [
+      {
+        name: "iPhone 6",
+        quantity: 1,
+      },
+      {
+        name: "AirPods Pro",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 8,
+    discount: 4,
+    dateOfEntry: "2-mar-2023",
+    subtotal: 1950,
+    total: 1872,
+    products: [
+      {
+        name: "iPhone 13",
+        quantity: 2,
+      },
+      {
+        name: "iPad Air",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 2,
+    discount: 3,
+    dateOfEntry: "18-apr-2023",
+    subtotal: 1050,
+    total: 1018.5,
+    products: [
+      {
+        name: "iPhone 5S",
+        quantity: 1,
+      },
+      {
+        name: "Apple Watch 7",
+        quantity: 1,
+      },
+      {
+        name: "AirPods Pro",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 7,
+    discount: 6,
+    dateOfEntry: "29-may-2023",
+    subtotal: 1800,
+    total: 1692,
+    products: [
+      {
+        name: "iPhone SE",
+        quantity: 2,
+      },
+      {
+        name: "Apple Watch 7",
+        quantity: 1,
+      },
+      {
+        name: "AirPods 3 Gen",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 10,
+    discount: 8,
+    dateOfEntry: "12-jan-2023",
+    subtotal: 5600,
+    total: 5152,
+    products: [
+      {
+        name: "iPhone 13 mini",
+        quantity: 2,
+      },
+      {
+        name: "iPad Pro",
+        quantity: 4,
+      },
+      {
+        name: "AirPods 2 Gen",
+        quantity: 3,
+      },
+    ],
+  },
+  {
+    userId: 9,
+    discount: 3,
+    dateOfEntry: "30-may-2023",
+    subtotal: 2150,
+    total: 2084.5,
+    products: [
+      {
+        name: "iPhone 7",
+        quantity: 1,
+      },
+      {
+        name: "iPad Air",
+        quantity: 2,
+      },
+    ],
+  },
+  {
+    userId: 3,
+    discount: 5,
+    dateOfEntry: "5-apr-2023",
+    subtotal: 4050,
+    total: 3847.5,
+    products: [
+      {
+        name: "iPhone 13 Pro",
+        quantity: 4,
+      },
+      {
+        name: "iPad Pro",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 10,
+    discount: 1,
+    dateOfEntry: "9-may-2023",
+    subtotal: 950,
+    total: 940.5,
+    products: [
+      {
+        name: "iPhone 6",
+        quantity: 1,
+      },
+      {
+        name: "AirPods Pro",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 8,
+    discount: 4,
+    dateOfEntry: "2-may-2023",
+    subtotal: 1950,
+    total: 1872,
+    products: [
+      {
+        name: "iPhone 13",
+        quantity: 2,
+      },
+      {
+        name: "iPad Air",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 2,
+    discount: 3,
+    dateOfEntry: "18-apr-2023",
+    subtotal: 1050,
+    total: 1018.5,
+    products: [
+      {
+        name: "iPhone 5S",
+        quantity: 1,
+      },
+      {
+        name: "Apple Watch 7",
+        quantity: 1,
+      },
+      {
+        name: "AirPods Pro",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 7,
+    discount: 6,
+    dateOfEntry: "29-may-2023",
+    subtotal: 1800,
+    total: 1692,
+    products: [
+      {
+        name: "iPhone SE",
+        quantity: 2,
+      },
+      {
+        name: "Apple Watch 7",
+        quantity: 1,
+      },
+      {
+        name: "AirPods 3 Gen",
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    userId: 10,
+    discount: 8,
+    dateOfEntry: "12-mar-2023",
     subtotal: 5600,
     total: 5152,
     products: [
@@ -924,7 +1275,7 @@ export const invoices = [
   {
     userId: 10,
     discount: 8,
-    dateOfEntry: "12-jun-2023",
+    dateOfEntry: "12-may-2023",
     subtotal: 5600,
     total: 5152,
     products: [
@@ -1055,7 +1406,7 @@ export const invoices = [
   {
     userId: 10,
     discount: 8,
-    dateOfEntry: "12-jun-2023",
+    dateOfEntry: "12-mar-2023",
     subtotal: 5600,
     total: 5152,
     products: [
@@ -1186,269 +1537,7 @@ export const invoices = [
   {
     userId: 10,
     discount: 8,
-    dateOfEntry: "12-jun-2023",
-    subtotal: 5600,
-    total: 5152,
-    products: [
-      {
-        name: "iPhone 13 mini",
-        quantity: 2,
-      },
-      {
-        name: "iPad Pro",
-        quantity: 4,
-      },
-      {
-        name: "AirPods 2 Gen",
-        quantity: 3,
-      },
-    ],
-  },
-  {
-    userId: 9,
-    discount: 3,
-    dateOfEntry: "30-may-2023",
-    subtotal: 2150,
-    total: 2084.5,
-    products: [
-      {
-        name: "iPhone 7",
-        quantity: 1,
-      },
-      {
-        name: "iPad Air",
-        quantity: 2,
-      },
-    ],
-  },
-  {
-    userId: 3,
-    discount: 5,
-    dateOfEntry: "5-apr-2023",
-    subtotal: 4050,
-    total: 3847.5,
-    products: [
-      {
-        name: "iPhone 13 Pro",
-        quantity: 4,
-      },
-      {
-        name: "iPad Pro",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 10,
-    discount: 1,
-    dateOfEntry: "9-may-2023",
-    subtotal: 950,
-    total: 940.5,
-    products: [
-      {
-        name: "iPhone 6",
-        quantity: 1,
-      },
-      {
-        name: "AirPods Pro",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 8,
-    discount: 4,
-    dateOfEntry: "2-jun-2023",
-    subtotal: 1950,
-    total: 1872,
-    products: [
-      {
-        name: "iPhone 13",
-        quantity: 2,
-      },
-      {
-        name: "iPad Air",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 2,
-    discount: 3,
-    dateOfEntry: "18-apr-2023",
-    subtotal: 1050,
-    total: 1018.5,
-    products: [
-      {
-        name: "iPhone 5S",
-        quantity: 1,
-      },
-      {
-        name: "Apple Watch 7",
-        quantity: 1,
-      },
-      {
-        name: "AirPods Pro",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 7,
-    discount: 6,
-    dateOfEntry: "29-may-2023",
-    subtotal: 1800,
-    total: 1692,
-    products: [
-      {
-        name: "iPhone SE",
-        quantity: 2,
-      },
-      {
-        name: "Apple Watch 7",
-        quantity: 1,
-      },
-      {
-        name: "AirPods 3 Gen",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 10,
-    discount: 8,
-    dateOfEntry: "12-jun-2023",
-    subtotal: 5600,
-    total: 5152,
-    products: [
-      {
-        name: "iPhone 13 mini",
-        quantity: 2,
-      },
-      {
-        name: "iPad Pro",
-        quantity: 4,
-      },
-      {
-        name: "AirPods 2 Gen",
-        quantity: 3,
-      },
-    ],
-  },
-  {
-    userId: 9,
-    discount: 3,
-    dateOfEntry: "30-may-2023",
-    subtotal: 2150,
-    total: 2084.5,
-    products: [
-      {
-        name: "iPhone 7",
-        quantity: 1,
-      },
-      {
-        name: "iPad Air",
-        quantity: 2,
-      },
-    ],
-  },
-  {
-    userId: 3,
-    discount: 5,
-    dateOfEntry: "5-apr-2023",
-    subtotal: 4050,
-    total: 3847.5,
-    products: [
-      {
-        name: "iPhone 13 Pro",
-        quantity: 4,
-      },
-      {
-        name: "iPad Pro",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 10,
-    discount: 1,
-    dateOfEntry: "9-may-2023",
-    subtotal: 950,
-    total: 940.5,
-    products: [
-      {
-        name: "iPhone 6",
-        quantity: 1,
-      },
-      {
-        name: "AirPods Pro",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 8,
-    discount: 4,
-    dateOfEntry: "2-jun-2023",
-    subtotal: 1950,
-    total: 1872,
-    products: [
-      {
-        name: "iPhone 13",
-        quantity: 2,
-      },
-      {
-        name: "iPad Air",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 2,
-    discount: 3,
-    dateOfEntry: "18-apr-2023",
-    subtotal: 1050,
-    total: 1018.5,
-    products: [
-      {
-        name: "iPhone 5S",
-        quantity: 1,
-      },
-      {
-        name: "Apple Watch 7",
-        quantity: 1,
-      },
-      {
-        name: "AirPods Pro",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 7,
-    discount: 6,
-    dateOfEntry: "29-may-2023",
-    subtotal: 1800,
-    total: 1692,
-    products: [
-      {
-        name: "iPhone SE",
-        quantity: 2,
-      },
-      {
-        name: "Apple Watch 7",
-        quantity: 1,
-      },
-      {
-        name: "AirPods 3 Gen",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    userId: 10,
-    discount: 8,
-    dateOfEntry: "12-jun-2023",
+    dateOfEntry: "12-jan-2023",
     subtotal: 5600,
     total: 5152,
     products: [
@@ -1529,7 +1618,7 @@ export const mainSeed = async () => {
     })
   );
 
-  await Promise.all(
+  /*   await Promise.all(
     invoices.map((invoice) => {
       return fetch("http://localhost:4000/invoices", {
         method: "POST",
@@ -1539,5 +1628,5 @@ export const mainSeed = async () => {
         body: JSON.stringify(invoice),
       });
     })
-  );
+  ); */
 };
