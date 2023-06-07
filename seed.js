@@ -1,6 +1,9 @@
 import { createInvoice } from "./controllers/invoices.controller.js";
 import { createProduct } from "./controllers/products.controller.js";
 import { createUser } from "./controllers/users.controller.js";
+import { User } from "./models/Users.js";
+import { Product } from "./models/Products.js";
+import bcrypt from "bcryptjs";
 
 export const users = [
   {
@@ -1594,6 +1597,44 @@ export const invoices = [
 export const mainSeed = async () => {
   // create users
   await Promise.all(
+    users.map(async (user) => {
+      const {
+        name,
+        pointOfContact,
+        phoneNumber,
+        status,
+        email,
+        password,
+        dateOfEntry,
+      } = user;
+
+      const hash = await bcrypt.hash(password, 10);
+
+      const newUser = await User.create({
+        name,
+        status,
+        pointOfContact,
+        phoneNumber,
+        email,
+        password: hash,
+        dateOfEntry,
+      });
+    })
+  );
+  console.log("users Created");
+  await Promise.all(
+    products.map(async (product) => {
+      const { id, name, price } = product;
+      const newProduct = await Product.create({
+        clientId: id,
+        name,
+        price,
+      });
+    })
+  );
+  console.log("product created");
+  /* 
+    await Promise.all(
     users.map((user) => {
       return fetch("http://localhost:4000/users", {
         method: "POST",
@@ -1617,8 +1658,8 @@ export const mainSeed = async () => {
       });
     })
   );
-
-  /*   await Promise.all(
+  
+  await Promise.all(
     invoices.map((invoice) => {
       return fetch("http://localhost:4000/invoices", {
         method: "POST",
