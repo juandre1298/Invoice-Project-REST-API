@@ -2,6 +2,7 @@ import { Invoice } from "../models/Invoices.js";
 import { PurchaseOrders } from "../models/PurchaseOrders.js";
 import { User } from "../models/Users.js";
 import { Product } from "../models/Products.js";
+import { sequelize } from "../database/database.js";
 
 // import services
 
@@ -100,37 +101,75 @@ export const getInvoiceById = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+// export const getInvoiceByRange = async (req, res) => {
+//   let { start, end } = req.params;
+//   let response = [];
+
+//   start = Number(start);
+//   end = Number(end);
+
+//   const N = end - start;
+
+//   console.log(N);
+
+//   let c = 0;
+//   try {
+//     // get all clients invoices
+//     const invoices = await Invoice.findAll();
+
+//     for (let i = start; i <= end; i++) {
+//       if (i >= invoices.length) {
+//         break;
+//       } else {
+//         // get element by id:
+//         const responseN = await servicesGetInvoiceById(invoices[i].id);
+//         response.push(responseN);
+//       }
+//     }
+
+//     res.json(response);
+//   } catch (error) {
+//     return res.status(500).json({ message: error.message });
+//   }
+// };
+
 export const getInvoiceByRange = async (req, res) => {
   let { start, end } = req.params;
-  let response = [];
-
   start = Number(start);
   end = Number(end);
 
-  const N = end - start;
-
-  console.log(N);
-
-  let c = 0;
   try {
-    // get all clients invoices
-    const invoices = await Invoice.findAll();
+    const query = `
+    SELECT
+      i.*,
+      u.name AS userName,
+      JSON_ARRAYAGG(
+        JSON_OBJECT(
+          'productId', p.internalId,
+          'productName', p.name,
+          'quantity', po.quantity
+        )
+      ) AS products
+    FROM invoices i
+    INNER JOIN users u ON i.userId = u.id
+    LEFT JOIN purchaseOrders po ON i.id = po.invoiceId
+    LEFT JOIN products p ON po.productId = p.internalId
+    WHERE i.id BETWEEN ? AND ?
+    GROUP BY i.id
+  `;
 
-    for (let i = start; i <= end; i++) {
-      if (i >= invoices.length) {
-        break;
-      } else {
-        // get element by id:
-        const responseN = await servicesGetInvoiceById(invoices[i].id);
-        response.push(responseN);
-      }
-    }
+    const result = await sequelize.query(query, {
+      replacements: [start, end],
+      type: sequelize.QueryTypes.SELECT,
+    });
 
-    res.json(response);
+    res.json(result);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
+
 export const getInvoiceByuserByRange = async (req, res) => {
   let { userId, start, end } = req.params;
   let response = [];
