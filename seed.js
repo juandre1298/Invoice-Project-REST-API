@@ -9,7 +9,7 @@ export const users = [
   {
     name: "Juan Andres",
     phoneNumber: "1234676543",
-    email: "juan@aimedgeapps.com",
+    email: "juandre1298@gmail.com",
     password: "123456",
     dateOfEntry: "1-Apr-23",
     status: "admin",

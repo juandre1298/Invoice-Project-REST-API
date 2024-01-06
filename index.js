@@ -8,10 +8,10 @@ async function main() {
     await sequelize.authenticate();
 
     console.log("connection has been established successfully.");
-    // force:false is to not overwrite the database
-    await sequelize.sync({ force: true }).then(() => {
-      mainSeed();
-    });
+    // // force:false is to not overwrite the database
+    // await sequelize.sync({ force: true }).then(() => {
+    //   mainSeed();
+    // });
 
     console.log("Database is sync");
     app.listen(PORT);
