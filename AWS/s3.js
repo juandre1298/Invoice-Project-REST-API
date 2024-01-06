@@ -49,8 +49,18 @@ export async function uploadFile2(file) {
   const uploadParams = {
     Bucket: bucketName,
     Body: fileStream,
-    Key: file.filename,
+    Key: `invoice-manager-app/${file.filename}`,
   };
 
   return s3.upload(uploadParams).promise();
+}
+
+// downloads a file from s3
+export async function getFileStream(fileKey) {
+  const downloadParams = {
+    Key: fileKey,
+    Bucket: bucketName,
+  };
+
+  return s3.getObject(downloadParams).createReadStream();
 }
