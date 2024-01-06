@@ -89,7 +89,7 @@ export const createInvoice = async (req, res) => {
       return createdPurchaseOrder;
     })
   );
-  res.status(201).send({ message: "invoice crated successfully" });
+  res.status(201).send({ message: "invoice created successfully" });
 };
 export const getInvoiceById = async (req, res) => {
   const { id } = req.params;

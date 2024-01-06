@@ -4,6 +4,7 @@ import userRoutes from "./routes/users.routes.js";
 import loginRoutes from "./routes/login.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import invoiceRoutes from "./routes/invoice.routes.js";
+import indexRoutes from "./routes/index.routes.js";
 
 import "./models/associations.js";
 
@@ -22,6 +23,7 @@ app.use(express.json());
 
 // use routes
 
+app.use(indexRoutes);
 app.use(userRoutes);
 app.use(loginRoutes);
 app.use(productRoutes);
