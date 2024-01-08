@@ -102,45 +102,13 @@ export const getInvoiceById = async (req, res) => {
   }
 };
 
-// export const getInvoiceByRange = async (req, res) => {
-//   let { start, end } = req.params;
-//   let response = [];
-
-//   start = Number(start);
-//   end = Number(end);
-
-//   const N = end - start;
-
-//   console.log(N);
-
-//   let c = 0;
-//   try {
-//     // get all clients invoices
-//     const invoices = await Invoice.findAll();
-
-//     for (let i = start; i <= end; i++) {
-//       if (i >= invoices.length) {
-//         break;
-//       } else {
-//         // get element by id:
-//         const responseN = await servicesGetInvoiceById(invoices[i].id);
-//         response.push(responseN);
-//       }
-//     }
-
-//     res.json(response);
-//   } catch (error) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
-
 export const getInvoiceByRange = async (req, res) => {
   let { start, end } = req.params;
   start = Number(start);
   end = Number(end);
 
   try {
-    const query = `
+    const queryInvoices = `
     SELECT
       i.*,
       u.name AS userName,
@@ -158,13 +126,24 @@ export const getInvoiceByRange = async (req, res) => {
     WHERE i.id BETWEEN ? AND ?
     GROUP BY i.id
   `;
+    const queryTotalCount = `
+    SELECT COUNT(*) AS totalInvoices
+    FROM invoices
+  `;
 
-    const result = await sequelize.query(query, {
-      replacements: [start, end],
-      type: sequelize.QueryTypes.SELECT,
-    });
+    const [invoices, totalCountResult] = await Promise.all([
+      sequelize.query(queryInvoices, {
+        replacements: [start, end],
+        type: sequelize.QueryTypes.SELECT,
+      }),
+      sequelize.query(queryTotalCount, {
+        type: sequelize.QueryTypes.SELECT,
+      }),
+    ]);
 
-    res.json(result);
+    const totalInvoices = totalCountResult[0].totalInvoices;
+
+    res.json({ invoices, totalInvoices });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
