@@ -7,7 +7,7 @@ import { generateData } from "../services/dashboardServices.js";
 
 // import services
 
-import { servicesGetInvoiceById } from "../services/getInvoiceById.js";
+import invoiceService from "../services/InvoiceServices.js";
 
 export const getInvoices = async (req, res) => {
   try {
@@ -96,7 +96,7 @@ export const createInvoice = async (req, res) => {
 export const getInvoiceById = async (req, res) => {
   const { id } = req.params;
   try {
-    const response = await servicesGetInvoiceById(id);
+    const response = await invoiceService.getInvoiceById(id);
     res.json(response);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -109,37 +109,9 @@ export const getInvoiceByRange = async (req, res) => {
   end = Number(end);
 
   try {
-    const queryInvoices = `
-    SELECT
-      i.*,
-      u.name AS userName,
-      JSON_ARRAYAGG(
-        JSON_OBJECT(
-          'productId', p.internalId,
-          'productName', p.name,
-          'quantity', po.quantity
-        )
-      ) AS products
-    FROM invoices i
-    INNER JOIN users u ON i.userId = u.id
-    LEFT JOIN purchaseOrders po ON i.id = po.invoiceId
-    LEFT JOIN products p ON po.productId = p.internalId
-    WHERE i.id BETWEEN ? AND ?
-    GROUP BY i.id
-  `;
-    const queryTotalCount = `
-    SELECT COUNT(*) AS totalInvoices
-    FROM invoices
-  `;
-
     const [invoices, totalCountResult] = await Promise.all([
-      sequelize.query(queryInvoices, {
-        replacements: [start, end],
-        type: sequelize.QueryTypes.SELECT,
-      }),
-      sequelize.query(queryTotalCount, {
-        type: sequelize.QueryTypes.SELECT,
-      }),
+      invoiceService.getInvoicesByRange(start, end),
+      invoiceService.getTotalCount(start, end),
     ]);
 
     const totalInvoices = totalCountResult[0].totalInvoices;
