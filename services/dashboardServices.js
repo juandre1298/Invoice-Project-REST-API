@@ -2,21 +2,43 @@ import { Invoice } from "../models/Invoices.js";
 import { PurchaseOrders } from "../models/PurchaseOrders.js";
 import { User } from "../models/Users.js";
 import { Product } from "../models/Products.js";
+import invoiceServices from "./InvoiceServices.js";
 
 export const generateData = async (userId, options) => {
   try {
-    console.log(userId, options);
-    // get users and passwords
     const user = await User.findOne({ where: { id: userId } });
-    if (user.role == "admin") {
-      console.log("is admin");
-    }
 
-    return { data: "conected!" };
+    let invoicesArray = [];
+    if (user.role == "admin") {
+      invoicesArray = await invoiceServices.getAllInvoices();
+    }
+    console.log("invoicesArray", invoicesArray);
+    const data = masterChartData(invoicesArray);
+
+    return { data };
   } catch (err) {
     return { message: err.message };
   }
 };
+
+function masterChartData(invoices) {
+  // calculate pie chart
+  let totalData = {};
+  invoices.forEach((invoice) => {
+    totalData[invoice.userId] = totalData[invoice.userId] ?? 0 + invoice.total;
+  });
+  console.log("totalData", totalData);
+  const [pieChartLabels, pieChartValues] = objectToArray(totalData);
+  console.log(pieChartLabels, pieChartValues);
+  return [pieChartLabels, pieChartValues];
+}
+
+function objectToArray(obj) {
+  const labels = Object.keys(obj);
+  const values = Object.values(obj);
+  return [labels, values];
+}
+
 function chartData(arr, productPrices) {
   const response = arr
     .filter((e) => e.length > 0)

@@ -23,6 +23,39 @@ const getTotalCount = async (start, end) => {
   }
 };
 
+const getAllInvoices = async (start, end) => {
+  start = Number(start);
+  end = Number(end);
+
+  try {
+    const queryInvoices = `
+    SELECT
+      i.*,
+      u.name AS userName,
+      JSON_ARRAYAGG(
+        JSON_OBJECT(
+          'productId', p.internalId,
+          'productName', p.name,
+          'quantity', po.quantity,
+          'unitPrice', p.price
+        )
+      ) AS products
+    FROM invoices i
+    INNER JOIN users u ON i.userId = u.id
+    LEFT JOIN purchaseOrders po ON i.id = po.invoiceId
+    LEFT JOIN products p ON po.productId = p.internalId
+    GROUP BY i.id
+  `;
+
+    return await sequelize.query(queryInvoices, {
+      type: sequelize.QueryTypes.SELECT,
+    });
+  } catch (error) {
+    console.error(error);
+    throw createErrorResponse(error.message);
+  }
+};
+
 const getInvoicesByRange = async (start, end) => {
   start = Number(start);
   end = Number(end);
@@ -96,4 +129,9 @@ const getInvoiceById = async (id) => {
   }
 };
 
-export default { getTotalCount, getInvoicesByRange, getInvoiceById };
+export default {
+  getTotalCount,
+  getAllInvoices,
+  getInvoicesByRange,
+  getInvoiceById,
+};
