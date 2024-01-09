@@ -56,32 +56,42 @@ const getAllInvoices = async (start, end) => {
   }
 };
 
-const getInvoicesByRange = async (start, end) => {
+const getInvoicesByRange = async (
+  start,
+  end,
+  orderByColumn = "id",
+  sortOrder = "asc"
+) => {
   start = Number(start);
   end = Number(end);
 
   try {
     const queryInvoices = `
-    SELECT
-      i.*,
-      u.name AS userName,
-      JSON_ARRAYAGG(
-        JSON_OBJECT(
-          'productId', p.internalId,
-          'productName', p.name,
-          'quantity', po.quantity
-        )
-      ) AS products
-    FROM invoices i
-    INNER JOIN users u ON i.userId = u.id
-    LEFT JOIN purchaseOrders po ON i.id = po.invoiceId
-    LEFT JOIN products p ON po.productId = p.internalId
-    WHERE i.id BETWEEN ? AND ?
-    GROUP BY i.id
-  `;
+      SELECT
+        i.*,
+        u.name AS userName,
+        JSON_ARRAYAGG(
+          JSON_OBJECT(
+            'productId', p.internalId,
+            'productName', p.name,
+            'quantity', po.quantity,
+            'unitPrice', p.price
+          )
+        ) AS products
+      FROM invoices i
+      INNER JOIN users u ON i.userId = u.id
+      LEFT JOIN purchaseOrders po ON i.id = po.invoiceId
+      LEFT JOIN products p ON po.productId = p.internalId
+      GROUP BY i.id
+      ORDER BY ${orderByColumn} ${sortOrder}
+      LIMIT ? OFFSET ?;
+    `;
+
+    // Execute the modified query
+    // ...
 
     return await sequelize.query(queryInvoices, {
-      replacements: [start, end],
+      replacements: [end - start, start],
       type: sequelize.QueryTypes.SELECT,
     });
   } catch (error) {
