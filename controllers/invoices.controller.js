@@ -129,8 +129,8 @@ export const getInvoiceByuserByRange = async (req, res) => {
 
   try {
     const [invoices, totalCountResult] = await Promise.all([
-      invoiceService.getInvoicesByRange(start, end),
-      invoiceService.getTotalCount(start, end),
+      invoiceService.getInvoicesByRangeAndUserId(start, end, userId),
+      invoiceService.getTotalCountByUserId(userId),
     ]);
 
     const totalInvoices = totalCountResult[0].totalInvoices;
