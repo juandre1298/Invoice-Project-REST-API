@@ -22,7 +22,7 @@ export const User = sequelize.define("users", {
   password: {
     type: DataTypes.STRING,
   },
-  status: {
+  role: {
     type: DataTypes.STRING,
     defaultValue: "client",
   },

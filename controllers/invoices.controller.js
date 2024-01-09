@@ -3,6 +3,7 @@ import { PurchaseOrders } from "../models/PurchaseOrders.js";
 import { User } from "../models/Users.js";
 import { Product } from "../models/Products.js";
 import { sequelize } from "../database/database.js";
+import { generateData } from "../services/dashboardServices.js";
 
 // import services
 
@@ -209,5 +210,16 @@ export const updateInvoice = async (req, res) => {
     return res.json(invoice);
   } catch (err) {
     return res.status(500).json({ message: err.message });
+  }
+};
+
+export const getDashboardData = async (req, res) => {
+  try {
+    console.log(req.params.userId);
+    const data = await generateData(req.params.userId, req.query);
+    return res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
 };

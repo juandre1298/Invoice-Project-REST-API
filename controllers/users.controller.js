@@ -16,7 +16,7 @@ export const createUser = async (req, res) => {
       name,
       pointOfContact,
       phoneNumber,
-      status,
+      role,
       email,
       password,
       dateOfEntry,
@@ -25,7 +25,7 @@ export const createUser = async (req, res) => {
 
     const newUser = await User.create({
       name,
-      status,
+      role,
       pointOfContact,
       phoneNumber,
       email,

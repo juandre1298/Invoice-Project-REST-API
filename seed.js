@@ -12,7 +12,7 @@ export const users = [
     email: "juandre1298@gmail.com",
     password: "123456",
     dateOfEntry: "1-Apr-23",
-    status: "admin",
+    role: "admin",
   },
   {
     name: "User 1",
@@ -20,7 +20,7 @@ export const users = [
     email: "user1@fakeemail.com",
     password: "123456",
     dateOfEntry: "1-Apr-23",
-    status: "admin",
+    role: "admin",
   },
   {
     name: "User 2",
@@ -28,7 +28,7 @@ export const users = [
     email: "user2@fakeemail.com",
     password: "123456",
     dateOfEntry: "1-Apr-23",
-    status: "admin",
+    role: "admin",
   },
   {
     name: "User 3",
@@ -37,7 +37,7 @@ export const users = [
     email: "user3@fakeemail.com",
     password: "123456",
     dateOfEntry: "1-Apr-23",
-    status: "admin",
+    role: "admin",
   },
   {
     name: "User 4",
@@ -1602,7 +1602,7 @@ export const mainSeed = async () => {
         name,
         pointOfContact,
         phoneNumber,
-        status,
+        role,
         email,
         password,
         dateOfEntry,
@@ -1612,7 +1612,7 @@ export const mainSeed = async () => {
 
       const newUser = await User.create({
         name,
-        status,
+        role,
         pointOfContact,
         phoneNumber,
         email,

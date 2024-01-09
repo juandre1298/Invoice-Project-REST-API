@@ -18,7 +18,7 @@ export const checkLogin = async (req, res) => {
         // Passwords match, user is authenticated
         res.json({
           authentication: result,
-          status: current_user[0].status,
+          role: current_user[0].role,
           id: current_user[0].id,
         });
       } else {
